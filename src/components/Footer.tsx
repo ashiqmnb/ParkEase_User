@@ -110,7 +110,7 @@ const Footer = () => {
                   </Box>
                </Link>
                
-               <Link component={NavLink} underline="none" to="/home">
+               <Link component={NavLink} underline="none" to="/">
                   <Box sx={quickBox}>
                      <Typography sx={qucikTypo}>
                         Home

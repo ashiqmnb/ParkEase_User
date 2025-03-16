@@ -1,12 +1,10 @@
-import { Avatar, Badge, Box, Drawer, IconButton, Link, List, ListItem, ListItemText, Tooltip, Typography } from "@mui/material";
+import { Avatar, Box, Drawer, IconButton, Link, List, ListItem, ListItemText, Tooltip, Typography } from "@mui/material";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../assets/images/ParkEase_Logo_noBg.png";
 import { useState } from "react";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { TbCoinRupeeFilled } from "react-icons/tb";
 import MenuIcon from "@mui/icons-material/Menu";
-
-
+import AddCoinModal from "./modals/AddCoinModal";
 
 
 const listStyleMobile = {
@@ -34,6 +32,7 @@ const listStyleDesktop = {
   fontWeight: "600",
   ":hover": { color: "#91FED2" },
 };
+
 const listStyleDesktop1 = {
   fontFamily: "Inter",
   color: "#2DC98A",
@@ -48,14 +47,19 @@ const Navbar = () => {
 
    const name = localStorage.getItem("name");
    const profile = localStorage.getItem("profile");
-   const coins = localStorage.getItem("coins");
+   const coins = Number(localStorage.getItem("coins")) || 0;
+
 
    const handleDrawerToggle = () => {
       setDrawerOpen(!drawerOpen);
    };
 
    const location = useLocation();
-   const selected =location.pathname
+   const selected = location.pathname;
+
+   const [open, setOpen] = useState(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => setOpen(false);
 
    return (
       <Box
@@ -116,17 +120,21 @@ const Navbar = () => {
          <Box>
             {name ? (
                <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
-                  <Box sx={{display:'flex', gap:1, alignItems:'center'}}>
-                     <Typography sx={{color:'white', fontWeight:'600'}}>
-                        {coins}
-                     </Typography>
-                     <TbCoinRupeeFilled 
-                        style={{
-                           color:'gold',
-                           fontSize:'28px'
-                        }}
-                        />
-                  </Box>
+                  <Tooltip title="Add coins" arrow>
+                     <Box 
+                        onClick={handleOpen}
+                        sx={{display:'flex', gap:1, alignItems:'center', cursor:'pointer'}}>
+                        <Typography sx={{color:'white', fontWeight:'600'}}>
+                           {coins}
+                        </Typography>
+                        <TbCoinRupeeFilled 
+                           style={{
+                              color:'gold',
+                              fontSize:'28px'
+                           }}
+                           />
+                     </Box>
+                  </Tooltip>
 
                   {/* <Tooltip title="Notifications" arrow>
                      <Link
@@ -172,10 +180,10 @@ const Navbar = () => {
                      <Typography
                         sx={{
                            fontFamily: "Inter",
-                           color: "black",
+                           color: "white",
                            fontSize: "16px",
                            fontWeight: "600",
-                           ":hover": { color: "#7940CF" },
+                           ":hover": { color: "#2DC98A" },
                         }}
                         >
                         Sign Up
@@ -297,7 +305,15 @@ const Navbar = () => {
             </List>
          </Drawer>
 
+         <AddCoinModal
+            coins={coins}
+            handleClose={handleClose}
+            open={open}
+            />
+
       </Box>
+
+      
    );
 };
 
