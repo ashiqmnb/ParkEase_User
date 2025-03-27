@@ -14,6 +14,7 @@ import Reservations from './pages/Reservations';
 import Help from './pages/Help';
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
+import CompanyById from './pages/CompanyById';
 
 
 
@@ -22,9 +23,7 @@ function AppContext(){
 
   const location = useLocation();
   const hideNavbar = location.pathname.startsWith("/auth"); 
-
-
-
+  
   return(
     <Box>
       <Toaster 
@@ -38,7 +37,10 @@ function AppContext(){
 
       <Routes>
         <Route path='/' element={<Home/>} />
+
         <Route path='/slots' element={<Companies/>} />
+        <Route path='/slots/:companyId' element={<CompanyById />} />
+        
         <Route path='/reservations' element={<Reservations/>} />
         <Route path='/help' element={<Help/>} />
         <Route path='/profile' element={<Profile/>} />

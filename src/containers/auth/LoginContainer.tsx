@@ -15,7 +15,6 @@ const LoginContainer = () => {
    const loginMutation = useMutation({
       mutationFn: login,
       onSuccess: (res) => {
-         console.log("login ress", res);
          localStorage.setItem('coins', res.data.coins)
          localStorage.setItem('profile', res.data.profile)
          localStorage.setItem('name', res.data.name)

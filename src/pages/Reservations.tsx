@@ -1,10 +1,9 @@
+import ReservationContainer from "../containers/ReservationContainer"
 
 
 const Reservations = () => {
   return (
-    <div>
-      Reservations
-    </div>
+    <ReservationContainer/>
   )
 }
 

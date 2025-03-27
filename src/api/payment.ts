@@ -38,3 +38,21 @@ export const confirmPaymentApi = async (paymentData: PaymentData) => {
       return Promise.reject(err.response.data);
    }
 };
+
+
+
+export const getCurrentCoins = async()=>{
+   try{
+      const res = await axios.get('https://localhost:7277/api/Coin/current-coins',
+         {
+            headers:{
+               Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+         }
+      )
+      return res.data.data;
+   }
+   catch(err: any){
+      return Promise.reject(err.response.data)
+   }
+}

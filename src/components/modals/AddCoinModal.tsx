@@ -86,7 +86,9 @@ const AddCoinModal:React.FC<AddCoinModalProps> = ({ open, handleClose, coins }) 
                   const updatedCoins = Number(coins) + Number(newCoins)/2;
                   localStorage.setItem('coins', updatedCoins.toString());
 
+                  toast.success(`Coins Added +${Number(newCoins)/2}`)
                   setNewCoins('');
+                  handleClose();
                }
                catch(error){
                   console.log("==>",error);
@@ -149,7 +151,7 @@ const AddCoinModal:React.FC<AddCoinModalProps> = ({ open, handleClose, coins }) 
             <Box sx={{marginY:'20px', display:'flex', flexDirection:'column', gap:1}}>
                <TextField
                   type="number"
-                  label="Enter Coins"
+                  label="Enter Amount"
                   variant="outlined"
                   fullWidth
                   rows={3}

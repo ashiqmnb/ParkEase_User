@@ -1,10 +1,8 @@
-
+import CompaniesContainer from "../containers/CompaniesContainer"
 
 const Companies = () => {
   return (
-    <div>
-      Companies
-    </div>
+    <CompaniesContainer />
   )
 }
 
