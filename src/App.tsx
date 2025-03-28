@@ -11,7 +11,6 @@ import ResetPw from './pages/auth/ResetPw';
 import Companies from './pages/Companies';
 import Navbar from './components/Navbar';
 import Reservations from './pages/Reservations';
-import Help from './pages/Help';
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
 import CompanyById from './pages/CompanyById';
@@ -42,10 +41,7 @@ function AppContext(){
         <Route path='/slots/:companyId' element={<CompanyById />} />
         
         <Route path='/reservations' element={<Reservations/>} />
-        <Route path='/help' element={<Help/>} />
         <Route path='/profile' element={<Profile/>} />
-
-
 
         <Route path='/auth'>
           <Route path='register' element={<Register />}/>

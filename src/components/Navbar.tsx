@@ -108,13 +108,13 @@ const Navbar = () => {
                </Typography>
             </Link>
 
-            <Link component={NavLink} underline="none" to="/help">
+            {/* <Link component={NavLink} underline="none" to="/help">
                <Typography
                sx={selected==='/help'? listStyleDesktop1:listStyleDesktop}
                >
                   Help
                </Typography>
-            </Link>
+            </Link> */}
          </Box>
 
          <Box>
@@ -291,7 +291,7 @@ const Navbar = () => {
                   </Box>
                </ListItem>
 
-               <ListItem onClick={handleDrawerToggle} disablePadding>
+               {/* <ListItem onClick={handleDrawerToggle} disablePadding>
                   <Box component={NavLink} to="/help" sx={listStyleMobile}>
                   <ListItemText
                      primary="Help"
@@ -301,7 +301,7 @@ const Navbar = () => {
                      }}
                   />
                   </Box>
-               </ListItem>
+               </ListItem> */}
             </List>
          </Drawer>
 

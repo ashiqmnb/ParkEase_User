@@ -23,7 +23,7 @@ const CompaniesContainer = () => {
       search
    }
    
-   const {data, refetch} = useQuery({
+   const {data, refetch, isPending} = useQuery({
       queryKey:['companies'],
       queryFn:()=>fetchCompanies(params),
    })
@@ -48,6 +48,7 @@ const CompaniesContainer = () => {
             handlePageChange={handlePageChange}
             pageNumber={pageNumber}
             totalPages={data?.totalPages}
+            isPending={isPending}
          />
 
       </Box>

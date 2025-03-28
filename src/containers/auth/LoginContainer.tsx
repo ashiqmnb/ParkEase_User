@@ -13,14 +13,12 @@ const LoginContainer = () => {
    const navigate = useNavigate();
 
    const loginMutation = useMutation({
-      mutationFn: login,
+      mutationFn: login,   
       onSuccess: (res) => {
          localStorage.setItem('coins', res.data.coins)
          localStorage.setItem('profile', res.data.profile)
          localStorage.setItem('name', res.data.name)
          localStorage.setItem('token', res.data.token)
-         localStorage.setItem('userName', res.data.userName)
-         localStorage.setItem('email', res.data.email)
          toast.success("User login successfull")
          setTimeout(() => {
             navigate("/");

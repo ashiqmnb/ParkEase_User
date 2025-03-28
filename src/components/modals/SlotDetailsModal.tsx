@@ -107,7 +107,7 @@ const SlotDetailsModal: React.FC<SlotDetailsModalProps> = ({
                   {isPending ? (
                      <CircularProgress size={22} sx={{ color: "white" }} />
                   ) : (
-                     "Send"
+                     "Reserve"
                   )}
                </Button>
             </Box>

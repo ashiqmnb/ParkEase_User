@@ -128,14 +128,14 @@ const Footer = () => {
                   </Box>
                </Link>
 
-               <Link component={NavLink} underline="none" to="/help">
+               {/* <Link component={NavLink} underline="none" to="/help">
                   <Box sx={quickBox}>
                      <Typography sx={qucikTypo}>
                         Help
                      </Typography>
                      <KeyboardArrowLeftIcon sx={{ color: "white", fontSize: "20px",}}/>
                   </Box>
-               </Link>
+               </Link> */}
 
             </Box>
 

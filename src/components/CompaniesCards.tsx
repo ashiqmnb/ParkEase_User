@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { Company } from "../types/companyTypes";
 import CustomPagination from "./CustomPagination";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ interface CompaniesCardsProps {
    totalPages: number;
    pageNumber: number;
    handlePageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
+   isPending: boolean
 }
 
 const CompaniesCards: React.FC<CompaniesCardsProps> = ({
@@ -15,9 +16,26 @@ const CompaniesCards: React.FC<CompaniesCardsProps> = ({
    handlePageChange,
    pageNumber,
    totalPages,
+   isPending
 }) => {
 
    const navigate = useNavigate();
+
+   if (isPending) {
+      return (
+         <Box
+            sx={{
+               height: '60vh',
+               width: '100%',
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+            }}
+         >
+            <CircularProgress size={50} sx={{ color: 'black' }} />
+         </Box>
+      );
+   }
 
    return (
       <Box
@@ -31,8 +49,8 @@ const CompaniesCards: React.FC<CompaniesCardsProps> = ({
                display: "flex",
                flexWrap: "wrap",
                marginY: "40px",
-               gap: 2,
-               justifyContent: "space-between",
+               gap: 4,
+               justifyContent: "center",
             }}
          >
             {companies?.map((company, index) => (
@@ -56,7 +74,7 @@ const CompaniesCards: React.FC<CompaniesCardsProps> = ({
                   <Typography
                      sx={{
                         fontFamily:'Li',
-                        fontSize:{sx:'14px', md:'18px'}
+                        fontSize:{xs:'14px', md:'18px'}
                      }}
                      >
                      {company.name}
